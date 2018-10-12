@@ -1,0 +1,5 @@
+D:\My Code\SharePoint\Jsom\RajeshSp\RajeshSp\bin\Debug\RajeshSp.pdb
+D:\My Code\SharePoint\Jsom\RajeshSp\RajeshSp\obj\Debug\RajeshSp.csprojAssemblyReference.cache
+D:\My Code\SharePoint\Jsom\RajeshSp\RajeshSp\obj\Debug\RajeshSp.csproj.CoreCompileInputs.cache
+D:\My Code\SharePoint\Jsom\RajeshSp\RajeshSp\obj\Debug\RajeshSp.dll
+D:\My Code\SharePoint\Jsom\RajeshSp\RajeshSp\obj\Debug\RajeshSp.pdb
