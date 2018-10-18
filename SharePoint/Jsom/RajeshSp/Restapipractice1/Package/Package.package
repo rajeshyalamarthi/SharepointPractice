@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="eca12029-43ad-4de6-b4b0-a4cb307dceaa" solutionId="eca12029-43ad-4de6-b4b0-a4cb307dceaa" resetWebServer="false" sharePointProductVersion="16.0" name="Restapipractice1" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="bc087b8f-4b2f-40ef-b7ee-e843dbc558b3" />
+    <featureReference itemId="026e6947-eea8-40fa-aad3-c38e5cda28a4" />
+  </features>
+</package>

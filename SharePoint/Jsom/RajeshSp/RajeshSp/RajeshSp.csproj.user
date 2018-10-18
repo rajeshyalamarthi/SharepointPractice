@@ -2,13 +2,14 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <SharePointSiteUrl>https://acuvateuk.sharepoint.com/sites/TrainingDevSite/</SharePointSiteUrl>
+    <OfficeAndSharePointStartAction>Google Chrome</OfficeAndSharePointStartAction>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{C1CDDADD-2546-481F-9697-4EA41081F2FC}">
         <ProjectStore>
-          <AppInstancePackageModifiedTime>2018-10-12T15:26:04.1873819Z</AppInstancePackageModifiedTime>
-          <AppInstanceId>9ac310de-771f-4221-a432-a75d353bcb2a</AppInstanceId>
+          <AppInstancePackageModifiedTime>2018-10-17T04:19:11.9836106Z</AppInstancePackageModifiedTime>
+          <AppInstanceId>b547f000-f1d6-4dd2-ad58-f864d46cc1f2</AppInstanceId>
         </ProjectStore>
       </FlavorProperties>
     </VisualStudio>

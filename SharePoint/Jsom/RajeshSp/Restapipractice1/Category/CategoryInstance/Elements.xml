@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Category" OnQuickLaunch="TRUE" TemplateType="100" Url="Lists/Category" Description="My List Instance">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="Title">Category</Field>
+          <Field Name="CategoryId">1</Field>
+          <Field Name="ProductName">Mango</Field>
+        </Row>
+        <Row>
+          <Field Name="Title">Category</Field>
+          <Field Name="CategoryId">1</Field>
+          <Field Name="ProductName">banana</Field>
+        </Row>
+        <Row>
+          <Field Name="Title">Category</Field>
+          <Field Name="CategoryId">2</Field>
+          <Field Name="ProductName">Dairymilk</Field>
+        </Row>
+        <Row>
+          <Field Name="Title">Category</Field>
+          <Field Name="CategoryId">2</Field>
+          <Field Name="ProductName">Munch</Field>
+        </Row>
+        <Row>
+          <Field Name="Title">Category</Field>
+          <Field Name="CategoryId">2</Field>
+          <Field Name="ProductName">Chocofeast</Field>
+        </Row>
+        <Row>
+          <Field Name="Title">Category</Field>
+          <Field Name="CategoryId">3</Field>
+          <Field Name="ProductName">britania</Field>
+        </Row>
+        <Row>
+          <Field Name="Title">Category</Field>
+          <Field Name="CategoryId">3</Field>
+          <Field Name="ProductName">HideAndSeek</Field>
+        </Row>
+        
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>
