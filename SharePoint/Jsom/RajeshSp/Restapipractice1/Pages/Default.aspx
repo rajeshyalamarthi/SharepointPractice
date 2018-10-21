@@ -78,7 +78,7 @@
         <input type="text" id="catid" placeholder="enter id"  /> 
           <input type="button" id="press3" value="DisplayItemBasedOnCategory" />
         <br/>
-
+           <input type="button" id="press6" value="AddLookup" />
     </div>
 
 </asp:Content>

@@ -55,6 +55,15 @@
 
          <input type="button" id="press4" value="AddField" />
         <br /></div>
+
+        <br />
+        <p>ADD LOOKUP FIELD</p>
+          <input type="button" id="press5" value="AddField" />
+           <input type="text" id="ListNameL"  placeholder="EnterListName" />
+          <input type="text" id="FieldL"  placeholder="EnterFieldName" />
+
+
+
         <p>ADD ITEMS--------------------------------------------------------------</p>
         <div>
          <input type="text" id="ListNameI"  placeholder="EnterListName" />
@@ -69,7 +78,7 @@
         <input type="text" id="catid" placeholder="enter id"  /> 
           <input type="button" id="press3" value="DisplayItemBasedOnCategory" />
         <br/>
-
+           <input type="button" id="press6" value="AddLookup" />
     </div>
 
 </asp:Content>

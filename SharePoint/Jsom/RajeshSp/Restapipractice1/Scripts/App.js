@@ -9,11 +9,14 @@ function initializePage() {
     // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
     $(document).ready(function () {
         getUserName();
+        
         $("#press").click(title);
         $("#press1").click(CreateList);
         $('#press2').click(createlistitems);
         $('#press3').click(Productsbasedoncategory);
         $('#press4').click(AddField);
+        $('#press6').click(AddLookupField);
+
 
     });
 
@@ -45,7 +48,7 @@ function initializePage() {
 
         });
         var call2 = jQuery.ajax({
-            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists?$select=Title",
+            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists?$select=Title,id",
             type: "GET",
             dataType: "json",
             headers: {
@@ -69,8 +72,8 @@ function initializePage() {
             message.text("Lists in " + callback1[0].d.Title);
             message.append("<br/>");
             jQuery.each(callback2[0].d.results, function (index, value) {
-                message.append(String.format("List Name = {0}",
-                    value.Title));
+                message.append(String.format("List Name = {0},id= {1}",
+                    value.Title, value.Id));
 
                 message.append("<br/>");
 
@@ -165,40 +168,43 @@ function initializePage() {
 
 
     function AddLookupField() {
+        alert("AddLookupField");
         var lname = $('#Field').val();
         var Ktype = $('#FieldType').val();
         var ListName = $('#ListName').val();
 
 
         var call = jQuery.ajax({
-            url: _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getByTitle( '" + ListName + "')/Fields",
+            url: _spPageContextInfo.webAbsoluteUrl + "_api/web/lists/getByTitle(ProductInfo)/fields/addfield",
             type: "POST",
+            //data: "{ 'parameters': { '__metadata': { 'type': 'SP.FieldCreationInformation' },'FieldTypeKind': 7, 'Title': 'CategorySelect', 'LookupListId': '9dcd157f-4c28-40d1-aaf9-2845426fccc1','LookupFieldName': 'Title'}} "
+            //,
             data: JSON.stringify({
-
-                "__metadata": { type: "SP.FieldLookUp" },
-                AllowMultipleValues: true,
-                Title: lname,
-               
-                Required: "true",
-                StaticName: lname
-
-
+                __metadata: {
+                    type: "SP.FieldCreationInformation"
+                },
+                FieldTypeKind: 7,
+                Title: "CategorySelect",
+               LookupListId: "9dcd157f-4c28-40d1-aaf9-2845426fccc1",
+                LookupFieldName: "Title"
             }),
 
+        
             headers: {
-                Accept: "application/json;odata=verbose",
-                "Content-Type": "application/json;odata=verbose",
-                "X-HTTP-Method": "MERGE",
-                "X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
+                "X-RequestDigest": jQuery("#__REQUESTDIGEST").val(),
+                accept: "application/json;odata=verbose",
+                "content-type": "application/json;odata=verbose",
+                "content-length": 1024
+
             }
-
         });
-
         var message = jQuery("#message1");
         call.done(function (data, textStatus, jqXHR) {
+            alert("lookup created");
             message.text("Filed added");
         });
         call.fail(function (jqXHR, textStatus, errorThrown) {
+            alert("lookup error");
             var response = JSON.parse(jqXHR.responseText);
             var message = response ? response.error.message.value : textStatus;
             alert("Call failed. Error: " + message);
@@ -242,91 +248,91 @@ function initializePage() {
     //    });
     //}
 
-        //    success: function (data) {
-        //        //console.log(data);
-        //        alert('added');
+    //    success: function (data) {
+    //        //console.log(data);
+    //        alert('added');
 
 
 
-        //    },
-        //    error: function (error) {
-        //        //alert(JSON.stringify(error));
-        //        alert('Some error occured. Please try again later.');
-        //    }
-        //});
+    //    },
+    //    error: function (error) {
+    //        //alert(JSON.stringify(error));
+    //        alert('Some error occured. Please try again later.');
+    //    }
+    //});
 
 
-        //    var call = jQuery.ajax({
-        //        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductList')/Fields/getByTitle('ID')",
-        //        type: "POST",
-        //        data: JSON.stringify({
-        //            "__metadata": { type: "SP.Data.TasksListItem" },
-        //            Title: 1,
-        //            //AssignedToId: userId,
-        //            //DueDate: due
-        //        }),
-        //        headers: {
-        //            Accept: "application/json;odata=verbose",
-        //            "Content-Type": "application/json;odata=verbose",
-        //            "X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
-        //        }
-        //    });
-        //    call.done(function (data, textStatus, jqXHR) {
-        //        var div = jQuery("#message");
-        //        div.text("Item added");
-        //    });
-        //    call.fail(function (jqXHR, textStatus, errorThrown) {
-        //        failHandler(jqXHR, textStatus, errorThrown);
-        //    });
+    //    var call = jQuery.ajax({
+    //        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductList')/Fields/getByTitle('ID')",
+    //        type: "POST",
+    //        data: JSON.stringify({
+    //            "__metadata": { type: "SP.Data.TasksListItem" },
+    //            Title: 1,
+    //            //AssignedToId: userId,
+    //            //DueDate: due
+    //        }),
+    //        headers: {
+    //            Accept: "application/json;odata=verbose",
+    //            "Content-Type": "application/json;odata=verbose",
+    //            "X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
+    //        }
+    //    });
+    //    call.done(function (data, textStatus, jqXHR) {
+    //        var div = jQuery("#message");
+    //        div.text("Item added");
+    //    });
+    //    call.fail(function (jqXHR, textStatus, errorThrown) {
+    //        failHandler(jqXHR, textStatus, errorThrown);
+    //    });
 
-        //}
-
-
-
-
-        //    var context = SP.ClientContext.get_current();
-        //    var web = context.get_web();
-        //    try {
-        //        var list = web.get_lists();
-        //        var listname = list.getByTitle("ProductList");
-
-        //        var itemcreateinfo = new SP.ListItemCreationInformation();
-        //        var listitem = listname.addItem(itemcreateinfo);
-
-
-        //        listitem.set_item("ID", "1");
-
-        //        //listitem.set_item("LeagueName","IPL");
-        //        listitem.set_item("ProductsName", "Mango");
+    //}
 
 
 
-        //        listitem.update();
-        //        context.executeQueryAsync(success, fail);
-        //        //success();
-        //        //fail();
 
-        //        function success() {
+    //    var context = SP.ClientContext.get_current();
+    //    var web = context.get_web();
+    //    try {
+    //        var list = web.get_lists();
+    //        var listname = list.getByTitle("ProductList");
 
-        //            var message = jQuery("#message1");
-        //            message.text("ItemAdded");
-
-        //        }
-
-        //        function fail(sender, args) {
-        //            alert("call failed, Error: " + args.get_message());
-
-        //        }
+    //        var itemcreateinfo = new SP.ListItemCreationInformation();
+    //        var listitem = listname.addItem(itemcreateinfo);
 
 
+    //        listitem.set_item("ID", "1");
 
-        //    }
-        //    catch (ex) {
-        //        alert(ex.message);
-        //    }
+    //        //listitem.set_item("LeagueName","IPL");
+    //        listitem.set_item("ProductsName", "Mango");
 
 
-        //}
+
+    //        listitem.update();
+    //        context.executeQueryAsync(success, fail);
+    //        //success();
+    //        //fail();
+
+    //        function success() {
+
+    //            var message = jQuery("#message1");
+    //            message.text("ItemAdded");
+
+    //        }
+
+    //        function fail(sender, args) {
+    //            alert("call failed, Error: " + args.get_message());
+
+    //        }
+
+
+
+    //    }
+    //    catch (ex) {
+    //        alert(ex.message);
+    //    }
+
+
+    //}
 
 
 
@@ -401,42 +407,42 @@ function initializePage() {
 
 
 
-        //-------------------------------------------------------binding
-        function Productsbasedoncategory() {
-            //var categoryId = $('#catid').val();
-            var id = $('#catid').val();
-            alert("id given :" + id);
-            var call = jQuery.ajax({
+    //-------------------------------------------------------binding
+    function Productsbasedoncategory() {
+        //var categoryId = $('#catid').val();
+        var id = $('#catid').val();
+        alert("id given :" + id);
+        var call = jQuery.ajax({
 
 
-                url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductList1')/Items/?$select=ProductName,ProductId/ProductName&$filter=(ProductId eq '" + id + "')",     // &$expand=ProductsName/ProductsId
+            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductList1')/Items/?$select=ProductName,ProductId/ProductName&$filter=(ProductId eq '" + id + "')",     // &$expand=ProductsName/ProductsId
 
-                type: "GET",
-                dataType: "json",
-                headers: {
-                    Accept: "application/json;odata=verbose"
-                }
+            type: "GET",
+            dataType: "json",
+            headers: {
+                Accept: "application/json;odata=verbose"
+            }
+        });
+
+        call.done(function (data) {
+            var message = jQuery("#message1");
+            //message.append("<br/>");
+            jQuery.each(data.d.results, function (index, value) {
+                message.append(String.format("Products Name = {0} " + "<br/> ",
+                    value.ProductName));
+
+
             });
-       
-            call.done(function (data) {
-                var message = jQuery("#message1");
-                //message.append("<br/>");
-                jQuery.each(data.d.results, function (index, value) {
-                    message.append(String.format("Products Name = {0} "+"<br/> " ,
-                        value.ProductName));
+        });
 
 
-                });
-                    });
-
-
-            call.fail(function (jqXHR, textStatus, errorThrown) {
-                var response = JSON.parse(jqXHR.responseText);
-                var message = response ? response.error.message.value : textStatus;
-                alert("Call failed. Error: " + message);
-            });
-        }
+        call.fail(function (jqXHR, textStatus, errorThrown) {
+            var response = JSON.parse(jqXHR.responseText);
+            var message = response ? response.error.message.value : textStatus;
+            alert("Call failed. Error: " + message);
+        });
     }
+}
 
 
 

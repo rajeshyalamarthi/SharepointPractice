@@ -2,3 +2,8 @@ G:\backup\My Code\SharePoint\Jsom\RajeshSp\Restapipractice1\bin\Debug\Restapipra
 G:\backup\My Code\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.csproj.CoreCompileInputs.cache
 G:\backup\My Code\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.dll
 G:\backup\My Code\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.pdb
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\bin\Debug\Restapipractice1.pdb
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.csprojAssemblyReference.cache
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.csproj.CoreCompileInputs.cache
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.dll
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.pdb
