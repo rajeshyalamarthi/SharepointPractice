@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="b2c94b61-9fb8-4d4a-8b09-420fe5d5e680" Scope="Web" Title="Restapipractice1 Feature4" Version="1.0.0.0">
+  <ElementManifests>
+    <ElementManifest Location="Category1Instance\Elements.xml" />
+    <ElementManifest Location="Category1\Elements.xml" />
+    <ElementFile Location="Category1\Schema.xml" />
+  </ElementManifests>
+  <UpgradeActions>
+    <VersionRange>
+      <ApplyElementManifests>
+        <ElementManifest Location="Category1Instance\Elements.xml" />
+        <ElementManifest Location="Category1\Elements.xml" />
+      </ApplyElementManifests>
+    </VersionRange>
+  </UpgradeActions>
+</Feature>

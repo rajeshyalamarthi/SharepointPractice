@@ -42,11 +42,20 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Category1\Category1Instance\Elements.xml" />
+    <Content Include="Category1\Elements.xml" />
+    <Content Include="Category1\Schema.xml" />
     <Content Include="Category\CategoryInstance\Elements.xml" />
     <Content Include="Category\Elements.xml" />
     <Content Include="Category\Schema.xml" />
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature3\Feature3.Template.xml">
+      <DependentUpon>Feature3.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature4\Feature4.Template.xml">
+      <DependentUpon>Feature4.feature</DependentUpon>
     </Content>
     <Content Include="Scores\Elements.xml" />
     <Content Include="Scores\Schema.xml" />
@@ -54,6 +63,12 @@
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <None Include="Category1\Category1Instance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6a0abaf6-a7c4-48c3-a2ca-46e980f58e8f}</SharePointProjectItemId>
+    </None>
+    <None Include="Category1\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b35b1abf-67e0-427a-838b-115aaaa57388}</SharePointProjectItemId>
+    </None>
     <None Include="Category\CategoryInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ab65c4de-f036-4882-9ce5-e0a5718eb149}</SharePointProjectItemId>
     </None>
@@ -62,6 +77,12 @@
     </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{026e6947-eea8-40fa-aad3-c38e5cda28a4}</FeatureId>
+    </None>
+    <None Include="Features\Feature3\Feature3.feature">
+      <FeatureId>{7bd3906a-755f-4bff-aa91-039c4dbf5dae}</FeatureId>
+    </None>
+    <None Include="Features\Feature4\Feature4.feature">
+      <FeatureId>{66a303ca-a9f5-4514-a719-8d28a6d5ff10}</FeatureId>
     </None>
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">

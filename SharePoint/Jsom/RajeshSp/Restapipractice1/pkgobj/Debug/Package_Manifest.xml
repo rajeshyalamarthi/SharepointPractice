@@ -3,5 +3,7 @@
   <FeatureManifests>
     <FeatureManifest Location="Restapipractice1_Feature1\Feature.xml" />
     <FeatureManifest Location="Restapipractice1_Feature2\Feature.xml" />
+    <FeatureManifest Location="Restapipractice1_Feature3\Feature.xml" />
+    <FeatureManifest Location="Restapipractice1_Feature4\Feature.xml" />
   </FeatureManifests>
 </Solution>

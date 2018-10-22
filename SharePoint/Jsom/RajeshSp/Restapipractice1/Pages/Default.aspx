@@ -37,64 +37,85 @@
 
 
     <div>
-        <p id="message">
+        <p id="message" style="color:forestgreen">
             <!-- The following content will be replaced with the user name when you run the app - see App.js -->
             initializing...
         </p>
-        <p id="message1"></p>
-        <input type="button" id="press" value="DisplayData" />
-        <input type="text" id="List" placeholder="EnterListName" />
-
-         <input type="button" id="press1" value="CreateList" />
-
-                    <p>Add Fields----------------------------------------------</p>
-        <div>
-            <input type="text" id="ListName"  placeholder="EnterListName" />
-         <input type="text" id="Field"  placeholder="EnterFieldName" />
-        <input type="text" id="FieldType" placeholder="EnterFieldKindType" />
-
-         <input type="button" id="press4" value="AddField" />
-        <br /></div>
-
+     <%--   <p id="message1"></p>--%>
         <br />
-        <p>ADD LOOKUP FIELD</p>
-          <input type="button" id="press5" value="AddField" />
-           <input type="text" id="ListNameL"  placeholder="EnterListName" />
-          <input type="text" id="FieldL"  placeholder="EnterFieldName" />
+        <input type="button" id="press" value="DisplayData" style="color:cornflowerblue" /> <br />
+        <label id="Info1" style="font-size:larger;color:crimson"></label>
+        <br />
+        <p>Create List------------------------------------------------------------------------</p>
+        <input type="text" id="List" placeholder="EnterListName" style="color:cornflowerblue" />
 
+         <input type="button" id="press1" value="CreateList" style="color:cornflowerblue"/> <br />
+        <label id="Info2" style="font-size:larger;color:crimson"></label>
+        <br />
 
-
-        <p>ADD ITEMS--------------------------------------------------------------</p>
+        <p>Add Fields--------------------------------------------------------------------------</p>
         <div>
-         <input type="text" id="ListNameI"  placeholder="EnterListName" />
-         <input type="button" id="press2" value="AddItem" />
-          <input type="text" id="FieldName" placeholder="FieldName" />
-        <input type="text" id="Item"   placeholder="Item" />
+        <input type="text" id="ListName"  placeholder="EnterListName" style="color:cornflowerblue"/>
+        <input type="text" id="Field"     placeholder="EnterFieldName" style="color:cornflowerblue"/>
+        <input type="text" id="FieldType" placeholder="EnterFieldKindType" style="color:cornflowerblue"/>
+
+         <input type="button" id="press4" value="AddField" style="color:cornflowerblue"/> <br />
+            <label id="Info3" style="font-size:larger;color:crimson"></label>
+        <br />
+
+        </div>
+
+    <%--    <br />
+        <p>ADD LOOKUP FIELD---------------------------------------------------------------------</p>
+          <input type="button" id="press5" value="AddField" style="color:cornflowerblue"/>
+           <input type="text" id="ListNameL"  placeholder="EnterListName" style="color:cornflowerblue" />
+          <input type="text" id="FieldL"  placeholder="EnterFieldName" style="color:cornflowerblue"/>
+
+        <br />--%>
+        <br />
+
+        <p>ADD ITEMS----------------------------------------------------------------------------</p>
+        <div>
+         <input type="text" id="ListNameI"  placeholder="EnterListName" style="color:cornflowerblue" />
+          <input type="text" id="FieldName" placeholder="FieldName" style="color:cornflowerblue"/>
+        <input type="text" id="Item"   placeholder="Item" style="color:cornflowerblue"/>
+               <input type="button" id="press2" value="AddItem" style="color:cornflowerblue" /> <br />
+                        <label id="Info4" style="font-size:larger;color:crimson"></label>
+
        <%--   <input type="text" id="FieldName1" placeholder="FieldName1" />
         <input type="text" id="Item1" placeholder="Item1"  />--%>
             </div>
         <br />
 
-        <input type="text" id="catid" placeholder="enter id"  /> 
-          <input type="button" id="press3" value="DisplayItemBasedOnCategory" />
-        <br/>
-        <br />
-         <input type="text" id="ListNamee" placeholder="enter ListName"  /> 
-         <input type="text" id="FiledName" placeholder="enter FieldName"  /> 
-        <input type="text" id="LookupListId" placeholder="enter LookupListId"  /> 
-         <input type="text" id="LookupFieldName" placeholder=" enter LookupFieldName"  /> 
-           <input type="button" id="press6" value="AddLookup" />
-    </div>
+        <p>Filter Based On Id-------------------------------------------------------------------</p>
+        <input type="text" id="catid" placeholder="enter id" style="color:cornflowerblue" /> 
+          <input type="button" id="press3" value="DisplayItemBasedOnCategory"style="color:cornflowerblue" /> <br />
+                    <label id="Info5" style="font-size:larger;color:crimson"></label>
 
-    <p>______________________________________________FilterLookup</p>
+        <br/>
+        <p>Add Lookup Field---------------------------------------------------------------------</p>
+         <input type="text" id="ListNamee" placeholder="enter ListName" style="color:cornflowerblue" /> 
+         <input type="text" id="FiledName" placeholder="enter FieldName" style="color:cornflowerblue" /> 
+        <input type="text" id="LookupListId" placeholder="enter LookupListId"style="color:cornflowerblue"  /> 
+         <input type="text" id="LookupFieldName" placeholder=" enter LookupFieldName"style="color:cornflowerblue"  /> 
+           <input type="button" id="press6" value="AddLookup" style="color:cornflowerblue"/> <br />
+                    <label id="Info6" style="font-size:larger;color:crimson"></label>
+
+
+    </div>
+    <br />
+    <p>FilterLookup-------------------------------------------------------------------------------</p>
 
      <%-- <input type="text" id="LookUpFilter" placeholder="enter CategoryName"  /> --%>
-    <select id="DropDown" placeholder="Select CategoryName">
+    <select id="DropDown" placeholder="Select CategoryName"style="color:cornflowerblue">
       <%--  <option id="1" value="Clothing">Clothing</option>
         <option id="2" value="FootWear">FootWear</option>
         <option id="3"  value="Beverages">Beverages</option>--%>
     </select>
-        <input type="button" id="press7" value="FilterBycategoryName" />
+        <input type="button" id="press7" value="FilterBycategoryName" style="color:cornflowerblue"/>
+    <br />
+    <label id="Info" style="font-size:larger;color:crimson"></label>
+<%--    <p id="Info" style="color:salmon;font-size:larger"></p>--%>
 
 
 </asp:Content>

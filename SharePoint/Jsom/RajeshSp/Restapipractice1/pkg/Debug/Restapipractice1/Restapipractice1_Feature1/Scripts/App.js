@@ -9,7 +9,7 @@ function initializePage() {
     // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
     $(document).ready(function () {
         getUserName();
-        
+
         $("#press").click(title);
         $("#press1").click(CreateList);
         $('#press2').click(createlistitems);
@@ -73,7 +73,7 @@ function initializePage() {
         var calls = jQuery.when(titlecall, call2);
         calls.done(function (callback1, callback2) {
 
-            var message = jQuery("#message1");
+            var message = jQuery("#Info1");
             message.text("Lists in " + callback1[0].d.Title);
             message.append("<br/>");
             jQuery.each(callback2[0].d.results, function (index, value) {
@@ -97,7 +97,7 @@ function initializePage() {
         });
     }
 
-// To Create List-------------------------------------------------------------------------------
+    // To Create List-------------------------------------------------------------------------------
     function CreateList() {
         var name = $('#List').val();
         var call = jQuery.ajax({
@@ -115,7 +115,7 @@ function initializePage() {
                 "X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
             }
         });
-        var message = jQuery("#message1");
+        var message = jQuery("#Info2");
         call.done(function (data, textStatus, jqXHR) {
             message.text("List added");
         });
@@ -125,7 +125,7 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
- //----------------------------------------Normal Field----------------------------------------------
+    //----------------------------------------Normal Field----------------------------------------------
     function AddField() {
         var FieldL = $('#FieldL').val();
         //var Ktype = $('#FieldType').val();
@@ -154,7 +154,7 @@ function initializePage() {
 
         });
 
-        var message = jQuery("#message1");
+        var message = jQuery("#Info3");
         call.done(function (data, textStatus, jqXHR) {
             message.text("Filed added");
         });
@@ -164,7 +164,7 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
-// To Add Lookup Field
+    // To Add Lookup Field
     function AddLookupField() {
         alert("AddLookupField");
         //var lname = $('#Field').val();
@@ -186,8 +186,8 @@ function initializePage() {
             url: _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getByTitle( '" + listname + "')/fields/addfield",
             type: "POST",
             data: "{'parameters':{'__metadata':{'type':'SP.FieldCreationInformation'},'FieldTypeKind': 7,'Title':'" + FieldName + "', 'LookupListId': '" + LookupListId + "', 'LookupFieldName': '" + LookupFieldName + "' }} ",
-       
-            
+
+
             //data: JSON.stringify({
             //    __metadata: {
             //        type: "SP.FieldCreationInformation"
@@ -198,7 +198,7 @@ function initializePage() {
             //    LookupFieldName: "Title"
             //}),
 
-        
+
             headers: {
                 "X-RequestDigest": $("#__REQUESTDIGEST").val(),
                 "accept": "application/json;odata=verbose",
@@ -208,7 +208,7 @@ function initializePage() {
             }
         });
         var call = jQuery.when(call1);
-        var message = jQuery("#message1");
+        var message = jQuery("#Info6");
         call.done(function (data, textStatus, jqXHR) {
             alert("lookup created");
             message.text("Filed added");
@@ -220,7 +220,7 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
-   //---------------------------------------------------------------------Commented(ListItem)------------
+    //---------------------------------------------------------------------Commented(ListItem)------------
 
     //function createlistitems() {
 
@@ -341,9 +341,9 @@ function initializePage() {
 
 
 
-// TO Create ListItems
+    // TO Create ListItems
 
-   function createlistitems() {
+    function createlistitems() {
         var Fieldname = $('#FieldName').val();
         var Item = $('#Item').val();
         var Fieldname1 = $('#FieldName1').val();
@@ -374,7 +374,7 @@ function initializePage() {
 
             function success() {
 
-                var message = jQuery("#message1");
+                var message = jQuery("#Info4");
                 message.text("ItemAdded");
 
             }
@@ -391,8 +391,8 @@ function initializePage() {
 
     }
 
-//-------------------------------------------------------(own)------------------------------
-   function Productsbasedoncategory() {
+    //-------------------------------------------------------(own)------------------------------
+    function Productsbasedoncategory() {
         //var categoryId = $('#catid').val();
         var id = $('#catid').val();
         alert("id given :" + id);
@@ -409,10 +409,10 @@ function initializePage() {
         });
 
         call.done(function (data) {
-            var message = jQuery("#message1");
+            var message = jQuery("#Info5");
             //message.append("<br/>");
             jQuery.each(data.d.results, function (index, value) {
-                message.append(String.format("Products Name = {0} " + "<br/> ",
+                message.append(String.format("{0} " + "<br/> ",
                     value.ProductName));
 
 
@@ -428,89 +428,88 @@ function initializePage() {
     }
 
 
-//--------------------------------------------------dropdown Lookup------------------------------
+    //--------------------------------------------------dropdown Lookup------------------------------
 
-function GetDropDown() {
-    alert("enterd");
-    ////var categoryId = $('#catid').val();
-    ////var CategorySelect = $('#LookUpFilter').val();
-    ////alert(" given :" + CategorySelect);
-    //var DropDownValue = $('#DropDown option:selected').text();
-    //alert(" given :" + DropDownValue);
-    var call = jQuery.ajax({
-     
+    function GetDropDown() {
+        alert("enterd");
+        ////var categoryId = $('#catid').val();
+        ////var CategorySelect = $('#LookUpFilter').val();
+        ////alert(" given :" + CategorySelect);
+        //var DropDownValue = $('#DropDown option:selected').text();
+        //alert(" given :" + DropDownValue);
+        var call = jQuery.ajax({
 
-        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('Category1')/Items/?$select=Title",     // &$expand=ProductsName/ProductsId
 
-        type: "GET",
-        dataType: "json",
-        headers: {
-            Accept: "application/json;odata=verbose"
-        }
-    });
+            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('CategoryInfo')/Items/?$select=Title",     // &$expand=ProductsName/ProductsId
 
-    call.done(function (data) {
-        $("#DropDown option").remove();
-        var message = jQuery("#DropDown");
-        //message.append("<br/>");
-        jQuery.each(data.d.results, function (index, value) {
-            message.append($("<option></option>")
-                .text(value.Title));
+            type: "GET",
+            dataType: "json",
+            headers: {
+                Accept: "application/json;odata=verbose"
+            }
+        });
+
+        call.done(function (data) {
+            //$("#DropDown option").remove();
+            var message = jQuery("#DropDown");
+            //message.append("<br/>");
+            jQuery.each(data.d.results, function (index, value) {
+                message.append($("<option></option>")
+                    .text(value.Title));
+
+
+            });
+
 
 
         });
 
-      
 
-    });
-
-
-    call.fail(function (jqXHR, textStatus, errorThrown) {
-        var response = JSON.parse(jqXHR.responseText);
-        var message = response ? response.error.message.value : textStatus;
-        alert("Call failed. Error: " + message);
-    });
-}
-
-
-//-------------------------------------- Lookup Filtering-----------------------------------------
-function Productsbasedoncategory1() {
-    //var categoryId = $('#catid').val();
-    //var CategorySelect = $('#LookUpFilter').val();
-    //alert(" given :" + CategorySelect);
-    var DropDownValue = $('#DropDown option:selected').text();
-    //alert(" given :" + DropDownValue);
-    var call = jQuery.ajax({
-
-
-        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductInfo')/Items/?$select=Title,CategorySelect/Title&$filter=(CategorySelect/Title eq '" + DropDownValue + "')&$expand= CategorySelect/Title",     // &$expand=ProductsName/ProductsId
-
-        type: "GET",
-        dataType: "json",
-        headers: {
-            Accept: "application/json;odata=verbose"
-        }
-    });
-
-    call.done(function (data) {
-        var message = jQuery("#message1");
-        //message.append("<br/>");
-        jQuery.each(data.d.results, function (index, value) {
-            message.append(String.format("Products Name = {0} " + "<br/> ",
-                value.Title));
-
-
+        call.fail(function (jqXHR, textStatus, errorThrown) {
+            var response = JSON.parse(jqXHR.responseText);
+            var message = response ? response.error.message.value : textStatus;
+            alert("Call failed. Error: " + message);
         });
-    });
+    }
 
 
-    call.fail(function (jqXHR, textStatus, errorThrown) {
-        var response = JSON.parse(jqXHR.responseText);
-        var message = response ? response.error.message.value : textStatus;
-        alert("Call failed. Error: " + message);
-    });
+    //-------------------------------------- Lookup Filtering-----------------------------------------
+    function Productsbasedoncategory1() {
+        //var categoryId = $('#catid').val();
+        //var CategorySelect = $('#LookUpFilter').val();
+        //alert(" given :" + CategorySelect);
+        var DropDownValue = $('#DropDown option:selected').text();
+        //alert(" given :" + DropDownValue);
+        var call = jQuery.ajax({
+
+
+            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductInfo')/Items/?$select=Title,ProductLookup7/Title&$filter=(ProductLookup7/Title eq '" + DropDownValue + "')&$expand= ProductLookup7/Title",     // &$expand=ProductsName/ProductsId
+
+            type: "GET",
+            dataType: "json",
+            headers: {
+                Accept: "application/json;odata=verbose"
+            }
+        });
+
+        call.done(function (data) {
+            //$("#Info").text.remove();
+            $('label[id*="Info"]').text('');
+            var message = jQuery("#Info");
+            //message.append("<br/>");
+            jQuery.each(data.d.results, function (index, value) {
+                message.append(String.format("{0} " + "<br/> ",
+                    value.Title));
+
+
+            });
+        });
+
+
+        call.fail(function (jqXHR, textStatus, errorThrown) {
+            var response = JSON.parse(jqXHR.responseText);
+            var message = response ? response.error.message.value : textStatus;
+            alert("Call failed. Error: " + message);
+        });
+    }
 }
-
-
-
-
