@@ -88,7 +88,13 @@
 
     <p>______________________________________________FilterLookup</p>
 
-      <input type="text" id="LookUpFilter" placeholder="enter CategoryName"  /> 
+     <%-- <input type="text" id="LookUpFilter" placeholder="enter CategoryName"  /> --%>
+    <select id="DropDown" placeholder="Select CategoryName">
+      <%--  <option id="1" value="Clothing">Clothing</option>
+        <option id="2" value="FootWear">FootWear</option>
+        <option id="3"  value="Beverages">Beverages</option>--%>
+    </select>
         <input type="button" id="press7" value="FilterBycategoryName" />
+
 
 </asp:Content>

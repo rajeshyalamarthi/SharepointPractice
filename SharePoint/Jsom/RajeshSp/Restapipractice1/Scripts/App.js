@@ -18,6 +18,7 @@ function initializePage() {
         $('#press6').click(AddLookupField);
 
         $('#press7').click(Productsbasedoncategory1);
+        GetDropDown();
 
 
     });
@@ -39,6 +40,8 @@ function initializePage() {
         alert('Failed to get user name. Error:' + args.get_message());
     }
 
+
+    // To display All the ListsInfo And WebInfo
     function title() {
         var titlecall = jQuery.ajax({
             url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/?$select=Title",
@@ -94,7 +97,7 @@ function initializePage() {
         });
     }
 
-
+// To Create List-------------------------------------------------------------------------------
     function CreateList() {
         var name = $('#List').val();
         var call = jQuery.ajax({
@@ -122,11 +125,7 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
-
-
-
-    //--------------------------------------------------------------------------------------
-
+ //----------------------------------------Normal Field----------------------------------------------
     function AddField() {
         var FieldL = $('#FieldL').val();
         //var Ktype = $('#FieldType').val();
@@ -165,10 +164,7 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
-
-
-
-
+// To Add Lookup Field
     function AddLookupField() {
         alert("AddLookupField");
         //var lname = $('#Field').val();
@@ -224,14 +220,7 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
-
-
-
-
-
-
-
-    //---------------------------------------------------------------------
+   //---------------------------------------------------------------------Commented(ListItem)------------
 
     //function createlistitems() {
 
@@ -352,7 +341,9 @@ function initializePage() {
 
 
 
-    function createlistitems() {
+// TO Create ListItems
+
+   function createlistitems() {
         var Fieldname = $('#FieldName').val();
         var Item = $('#Item').val();
         var Fieldname1 = $('#FieldName1').val();
@@ -392,9 +383,6 @@ function initializePage() {
                 alert("call failed, Error: " + args.get_message());
 
             }
-
-
-
         }
         catch (ex) {
             alert(ex.message);
@@ -403,26 +391,8 @@ function initializePage() {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //-------------------------------------------------------binding
-    function Productsbasedoncategory() {
+//-------------------------------------------------------(own)------------------------------
+   function Productsbasedoncategory() {
         //var categoryId = $('#catid').val();
         var id = $('#catid').val();
         alert("id given :" + id);
@@ -456,18 +426,64 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
+
+
+//--------------------------------------------------dropdown Lookup------------------------------
+
+function GetDropDown() {
+    alert("enterd");
+    ////var categoryId = $('#catid').val();
+    ////var CategorySelect = $('#LookUpFilter').val();
+    ////alert(" given :" + CategorySelect);
+    //var DropDownValue = $('#DropDown option:selected').text();
+    //alert(" given :" + DropDownValue);
+    var call = jQuery.ajax({
+     
+
+        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('Category1')/Items/?$select=Title",     // &$expand=ProductsName/ProductsId
+
+        type: "GET",
+        dataType: "json",
+        headers: {
+            Accept: "application/json;odata=verbose"
+        }
+    });
+
+    call.done(function (data) {
+        $("#DropDown option").remove();
+        var message = jQuery("#DropDown");
+        //message.append("<br/>");
+        jQuery.each(data.d.results, function (index, value) {
+            message.append($("<option></option>")
+                .text(value.Title));
+
+
+        });
+
+      
+
+    });
+
+
+    call.fail(function (jqXHR, textStatus, errorThrown) {
+        var response = JSON.parse(jqXHR.responseText);
+        var message = response ? response.error.message.value : textStatus;
+        alert("Call failed. Error: " + message);
+    });
 }
 
 
-//--------------------------------------Lookup Filtering
+//-------------------------------------- Lookup Filtering-----------------------------------------
 function Productsbasedoncategory1() {
     //var categoryId = $('#catid').val();
-    var CategorySelect = $('#LookUpFilter').val();
-    alert(" given :" + CategorySelect);
+    //var CategorySelect = $('#LookUpFilter').val();
+    //alert(" given :" + CategorySelect);
+    var DropDownValue = $('#DropDown option:selected').text();
+    //alert(" given :" + DropDownValue);
     var call = jQuery.ajax({
 
 
-        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductInfo')/Items/?$select=Title,CategorySelect/Title&$filter=(CategorySelect/Title eq '" + CategorySelect + "')&$expand= CategorySelect/Title",     // &$expand=ProductsName/ProductsId
+        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductInfo')/Items/?$select=Title,CategorySelect/Title&$filter=(CategorySelect/Title eq '" + DropDownValue + "')&$expand= CategorySelect/Title",     // &$expand=ProductsName/ProductsId
 
         type: "GET",
         dataType: "json",
@@ -494,9 +510,6 @@ function Productsbasedoncategory1() {
         alert("Call failed. Error: " + message);
     });
 }
-
-
-
 
 
 
