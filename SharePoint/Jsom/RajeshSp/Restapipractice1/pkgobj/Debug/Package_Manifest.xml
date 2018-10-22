@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="eca12029-43ad-4de6-b4b0-a4cb307dceaa" SharePointProductVersion="16.0">
   <FeatureManifests>
-    <FeatureManifest Location="Restapipractice1_Feature1\Feature.xml" />
-    <FeatureManifest Location="Restapipractice1_Feature2\Feature.xml" />
-    <FeatureManifest Location="Restapipractice1_Feature3\Feature.xml" />
-    <FeatureManifest Location="Restapipractice1_Feature4\Feature.xml" />
+    <FeatureManifest Location="RajeshRestapipractice1_Feature1\Feature.xml" />
+    <FeatureManifest Location="RajeshRestapipractice1_Feature2\Feature.xml" />
+    <FeatureManifest Location="RajeshRestapipractice1_Feature3\Feature.xml" />
+    <FeatureManifest Location="RajeshRestapipractice1_Feature4\Feature.xml" />
   </FeatureManifests>
 </Solution>

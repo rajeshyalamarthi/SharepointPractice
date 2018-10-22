@@ -1,0 +1,4 @@
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\bin\Debug\Restapipractice1.pdb
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\RajeshRestapipractice1.csproj.CoreCompileInputs.cache
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.dll
+G:\backup\SharepointPractice\SharePoint\Jsom\RajeshSp\Restapipractice1\obj\Debug\Restapipractice1.pdb
