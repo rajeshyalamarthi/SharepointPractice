@@ -17,6 +17,8 @@ function initializePage() {
         $('#press4').click(AddField);
         $('#press6').click(AddLookupField);
 
+        $('#press7').click(Productsbasedoncategory1);
+
 
     });
 
@@ -169,35 +171,47 @@ function initializePage() {
 
     function AddLookupField() {
         alert("AddLookupField");
-        var lname = $('#Field').val();
-        var Ktype = $('#FieldType').val();
-        var ListName = $('#ListName').val();
+        //var lname = $('#Field').val();
+        //var Ktype = $('#FieldType').val();
+        //var ListName = $('#ListName').val();
+        var listname = $('#ListNamee').val();
+        alert(listname);
+        var FieldName = $('#FiledName').val();
+        alert(FieldName);
+        var LookupListId = $('#LookupListId').val();
+        alert(LookupListId);
+        var LookupFieldName = $('#LookupFieldName').val();
+        alert(LookupFieldName);
 
 
-        var call = jQuery.ajax({
-            url: _spPageContextInfo.webAbsoluteUrl + "_api/web/lists/getByTitle(ProductInfo)/fields/addfield",
+
+
+        var call1 = jQuery.ajax({
+            url: _spPageContextInfo.webAbsoluteUrl + "/_api/web/lists/getByTitle( '" + listname + "')/fields/addfield",
             type: "POST",
-            //data: "{ 'parameters': { '__metadata': { 'type': 'SP.FieldCreationInformation' },'FieldTypeKind': 7, 'Title': 'CategorySelect', 'LookupListId': '9dcd157f-4c28-40d1-aaf9-2845426fccc1','LookupFieldName': 'Title'}} "
-            //,
-            data: JSON.stringify({
-                __metadata: {
-                    type: "SP.FieldCreationInformation"
-                },
-                FieldTypeKind: 7,
-                Title: "CategorySelect",
-               LookupListId: "9dcd157f-4c28-40d1-aaf9-2845426fccc1",
-                LookupFieldName: "Title"
-            }),
+            data: "{'parameters':{'__metadata':{'type':'SP.FieldCreationInformation'},'FieldTypeKind': 7,'Title':'" + FieldName + "', 'LookupListId': '" + LookupListId + "', 'LookupFieldName': '" + LookupFieldName + "' }} ",
+       
+            
+            //data: JSON.stringify({
+            //    __metadata: {
+            //        type: "SP.FieldCreationInformation"
+            //    },
+            //    FieldTypeKind: 7,
+            //    Title: "CategorySelect",
+            //    LookupListId: "9dcd157f-4c28-40d1-aaf9-2845426fccc1",
+            //    LookupFieldName: "Title"
+            //}),
 
         
             headers: {
-                "X-RequestDigest": jQuery("#__REQUESTDIGEST").val(),
-                accept: "application/json;odata=verbose",
-                "content-type": "application/json;odata=verbose",
-                "content-length": 1024
+                "X-RequestDigest": $("#__REQUESTDIGEST").val(),
+                "accept": "application/json;odata=verbose",
+                "content-type": "application/json;odata=verbose"
+                //"content-length": 1024
 
             }
         });
+        var call = jQuery.when(call1);
         var message = jQuery("#message1");
         call.done(function (data, textStatus, jqXHR) {
             alert("lookup created");
@@ -415,7 +429,7 @@ function initializePage() {
         var call = jQuery.ajax({
 
 
-            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductList1')/Items/?$select=ProductName,ProductId/ProductName&$filter=(ProductId eq '" + id + "')",     // &$expand=ProductsName/ProductsId
+            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('Category')/Items/?$select=ProductName,CategoryId/ProductName&$filter=(CategoryId eq '" + id + "')",     // &$expand=ProductsName/ProductsId
 
             type: "GET",
             dataType: "json",
@@ -443,6 +457,44 @@ function initializePage() {
         });
     }
 }
+
+
+//--------------------------------------Lookup Filtering
+function Productsbasedoncategory1() {
+    //var categoryId = $('#catid').val();
+    var CategorySelect = $('#LookUpFilter').val();
+    alert(" given :" + CategorySelect);
+    var call = jQuery.ajax({
+
+
+        url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('ProductInfo')/Items/?$select=Title,CategorySelect/Title&$filter=(CategorySelect/Title eq '" + CategorySelect + "')&$expand= CategorySelect/Title",     // &$expand=ProductsName/ProductsId
+
+        type: "GET",
+        dataType: "json",
+        headers: {
+            Accept: "application/json;odata=verbose"
+        }
+    });
+
+    call.done(function (data) {
+        var message = jQuery("#message1");
+        //message.append("<br/>");
+        jQuery.each(data.d.results, function (index, value) {
+            message.append(String.format("Products Name = {0} " + "<br/> ",
+                value.Title));
+
+
+        });
+    });
+
+
+    call.fail(function (jqXHR, textStatus, errorThrown) {
+        var response = JSON.parse(jqXHR.responseText);
+        var message = response ? response.error.message.value : textStatus;
+        alert("Call failed. Error: " + message);
+    });
+}
+
 
 
 

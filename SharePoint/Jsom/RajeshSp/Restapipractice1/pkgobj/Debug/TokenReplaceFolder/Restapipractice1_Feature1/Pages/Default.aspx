@@ -78,7 +78,17 @@
         <input type="text" id="catid" placeholder="enter id"  /> 
           <input type="button" id="press3" value="DisplayItemBasedOnCategory" />
         <br/>
+        <br />
+         <input type="text" id="ListNamee" placeholder="enter ListName"  /> 
+         <input type="text" id="FiledName" placeholder="enter FieldName"  /> 
+        <input type="text" id="LookupListId" placeholder="enter LookupListId"  /> 
+         <input type="text" id="LookupFieldName" placeholder=" enter LookupFieldName"  /> 
            <input type="button" id="press6" value="AddLookup" />
     </div>
+
+    <p>______________________________________________FilterLookup</p>
+
+      <input type="text" id="LookUpFilter" placeholder="enter CategoryName"  /> 
+        <input type="button" id="press7" value="FilterBycategoryName" />
 
 </asp:Content>
