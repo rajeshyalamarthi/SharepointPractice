@@ -72,6 +72,7 @@ function initializePage() {
 
         var calls = jQuery.when(titlecall, call2);
         calls.done(function (callback1, callback2) {
+            $('label[id*="Info1"]').text('');
 
             var message = jQuery("#Info1");
             message.text("Lists in " + callback1[0].d.Title);
@@ -115,6 +116,7 @@ function initializePage() {
                 "X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
             }
         });
+        $('label[id*="Info2"]').text('');
         var message = jQuery("#Info2");
         call.done(function (data, textStatus, jqXHR) {
             message.text("List added");
@@ -153,7 +155,7 @@ function initializePage() {
             }
 
         });
-
+        $('label[id*="Info3"]').text('');
         var message = jQuery("#Info3");
         call.done(function (data, textStatus, jqXHR) {
             message.text("Filed added");
@@ -208,6 +210,7 @@ function initializePage() {
             }
         });
         var call = jQuery.when(call1);
+        $('label[id*="Info6"]').text('');
         var message = jQuery("#Info6");
         call.done(function (data, textStatus, jqXHR) {
             alert("lookup created");
@@ -373,7 +376,7 @@ function initializePage() {
             //fail();
 
             function success() {
-
+                $('label[id*="Info4"]').text('');
                 var message = jQuery("#Info4");
                 message.text("ItemAdded");
 
@@ -409,6 +412,7 @@ function initializePage() {
         });
 
         call.done(function (data) {
+            $('label[id*="Info5"]').text('');
             var message = jQuery("#Info5");
             //message.append("<br/>");
             jQuery.each(data.d.results, function (index, value) {
@@ -450,7 +454,7 @@ function initializePage() {
         });
 
         call.done(function (data) {
-            //$("#DropDown option").remove();
+            $("#DropDown option").remove();
             var message = jQuery("#DropDown");
             //message.append("<br/>");
             jQuery.each(data.d.results, function (index, value) {
