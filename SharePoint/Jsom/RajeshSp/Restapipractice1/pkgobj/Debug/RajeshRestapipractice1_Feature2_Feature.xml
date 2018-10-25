@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Title="Restapipractice1 Feature2" Id="a9a67e13-f201-45eb-a453-54573b5240ea" Scope="Web" Version="1.0.0.0">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="a9a67e13-f201-45eb-a453-54573b5240ea" Scope="Web" Title="Restapipractice1 Feature2" Version="1.0.0.0">
   <ElementManifests>
     <ElementManifest Location="Category\Elements.xml" />
     <ElementFile Location="Category\Schema.xml" />

@@ -516,4 +516,45 @@ function initializePage() {
             alert("Call failed. Error: " + message);
         });
     }
+
+//-------------------------------------------------------Add Item using RestApi---------------------
+
+    function CreateListItem() {
+        var call = jQuery.ajax({
+            url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/?$select=Title,CurrentUser/Id&$expand=CurrentUser/Id",
+            type: "GET",
+            dataType: "json",
+            headers: {
+                Accept: "application/json;odata=verbose"
+            }
+
+        });
+        call.done(function (data, textStatus, jqXHR) {
+            var UserId = data.d.CurrentUser.Id;
+            addItem(UserId);
+        });
+        call.fail(function (jqXHR, textStatus, errorThrown) {
+            failHandler(jqXHR, textStatus, errorThrown);
+        });
+
+        function AddItem(UserId) {
+            var due = new Date();
+            due.setDate(due.getDate() + 7);
+
+            var call = jQuery.ajax({
+                url: _spPageContextInfo.webAbsoluteUrl + "/_api/Web/Lists/getByTitle('CategoryInfo')/Items",
+                type: "POST",
+                data: JSON.stringify({
+                    "__metadata": { type: "SP.Data.TasksListItem" },
+                    Title:""
+                })
+            })
+        }
+
+
+    }
+
+
+
+
 }
